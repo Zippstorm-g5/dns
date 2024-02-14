@@ -31,13 +31,13 @@ echo $countrycode
 echo $address
 echo $RECORD_ID
 if [ -z "$RECORD_ID" ] || [ "$RECORD_ID" = "null" ]; then
-     curl -X PUT "https://api.cloudflare.com/client/v4/zones/${CF_Zone_ID}/dns_records/${RECORD_ID}" \
-          -H "Authorization: Bearer ${CF_Token}" \
-          -H "Content-Type:application/json" \
-          --data "{\"type\":\"${ip_type}\",\"name\":\"${countrycode}.zippstorm.com\",\"content\":\"${address}\",\"ttl\":60,\"proxied\":false}"
-else
      curl -X POST "https://api.cloudflare.com/client/v4/zones/${CF_Zone_ID}/dns_records" \
           -H "Authorization: Bearer ${CF_Token}" \
           -H "Content-Type: application/json" \
+          --data "{\"type\":\"${ip_type}\",\"name\":\"${countrycode}.zippstorm.com\",\"content\":\"${address}\",\"ttl\":60,\"proxied\":false}"
+else
+     curl -X PUT "https://api.cloudflare.com/client/v4/zones/${CF_Zone_ID}/dns_records/${RECORD_ID}" \
+          -H "Authorization: Bearer ${CF_Token}" \
+          -H "Content-Type:application/json" \
           --data "{\"type\":\"${ip_type}\",\"name\":\"${countrycode}.zippstorm.com\",\"content\":\"${address}\",\"ttl\":60,\"proxied\":false}"
 fi
