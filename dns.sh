@@ -30,7 +30,7 @@ fi
 echo $countrycode
 echo $address
 echo $RECORD_ID
-if [ -z "${RECORD_ID}" ]; then
+if [ -z "$RECORD_ID" ] || [ "$RECORD_ID" = "null" ]; then
      curl -X PUT "https://api.cloudflare.com/client/v4/zones/${CF_Zone_ID}/dns_records/${RECORD_ID}" \
           -H "Authorization: Bearer ${CF_Token}" \
           -H "Content-Type:application/json" \
