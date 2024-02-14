@@ -27,8 +27,9 @@ else
     echo "Unknown IP type: $ip_type"
     exit 1
 fi
-
-
+echo $countrycode
+echo $address
+echo $RECORD_ID
 curl -X PUT "https://api.cloudflare.com/client/v4/zones/${CF_Zone_ID}/dns_records/${RECORD_ID}" \
      -H "Authorization: Bearer ${CF_Token}" \
      -H "Content-Type:application/json" \
