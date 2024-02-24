@@ -1,7 +1,20 @@
-# -*- coding:utf-8 -*-
 #!/bin/bash
-apt update
-apt install jq -y
+# -*- coding:utf-8 -*-
+
+# 检查jq是否已安装
+if ! command -v jq &> /dev/null; then
+    echo "jq 未安装，开始安装..."
+
+    # 更新包信息
+    sudo apt update
+
+    # 安装jq
+    sudo apt install jq -y
+
+    echo "jq 安装完成。"
+else
+    echo "jq 已安装，跳过安装步骤。"
+fi
 
 echo -n "解析类型:(A or AAAA) "
 read ip_type
