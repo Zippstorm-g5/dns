@@ -21,7 +21,7 @@ read ip_type
 
 username=$(jq -r '.inbounds[0].users[0].username' /usr/local/etc/sing-box/config.json)
 
-# 从username中提取"gao"前面的两个字母
+
 countrycode=${username: -5:2}
 
 
